@@ -55,8 +55,8 @@ class _SplashScreenState extends State<SplashScreen> {
                   height: (30 / 100) * screenHeight,
                   child: const Center(
                       child: CircularProgressIndicator(
-                        color: Colors.white,
-                      )),
+                    color: Colors.white,
+                  )),
                 )
               ],
             )),
@@ -66,10 +66,10 @@ class _SplashScreenState extends State<SplashScreen> {
         height: (10 / 100) * screenHeight,
         child: const Center(
             child: Text(
-              "MOBIGIC® TECHNOLOGIES PRIVATE LIMITED",
-              style: TextStyle(
-                  color: Colors.white, fontSize: 10, fontWeight: FontWeight.normal),
-            )),
+          "MOBIGIC® TECHNOLOGIES PRIVATE LIMITED",
+          style: TextStyle(
+              color: Colors.white, fontSize: 10, fontWeight: FontWeight.normal),
+        )),
       ),
     );
   }
@@ -81,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
         MaterialPageRoute(
           builder: (context) => const HomePage(),
         ),
-            (route) => false,
+        (route) => false,
       );
     });
   }

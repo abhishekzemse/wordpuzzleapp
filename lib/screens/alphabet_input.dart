@@ -24,27 +24,7 @@ class _AlphabetInputPageState extends State<AlphabetInputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Alphabet Input'),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              if (!_alphabets.contains("")) {
-                showSearch(
-                    context: context,
-                    delegate: MySearchDelegate(
-                        _alphabets, widget.columns, widget.rows));
-              } else {
-                Fluttertoast.showToast(
-                  msg: 'Please fill the grid values before searching',
-                  backgroundColor: Colors.grey,
-                );
-              }
-            },
-          ),
-        ],
-      ),
+      appBar: appBarWithActionButtons(),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: SingleChildScrollView(
@@ -78,19 +58,47 @@ class _AlphabetInputPageState extends State<AlphabetInputPage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Navigator.pop(context);
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const HomePage(),
-            ),
-                (route) => false,
-          );
-        },
-        child: const Icon(Icons.restart_alt_sharp),
-      ),
+      floatingActionButton: fabIcon(),
+    );
+  }
+
+  appBarWithActionButtons() {
+    return AppBar(
+      title: const Text('Alphabet Input'),
+      actions: <Widget>[
+        IconButton(
+          icon: const Icon(Icons.search),
+          onPressed: () {
+            if (!_alphabets.contains("")) {
+              showSearch(
+                  context: context,
+                  delegate: MySearchDelegate(
+                      _alphabets, widget.columns, widget.rows));
+            } else {
+              Fluttertoast.showToast(
+                msg: 'Please fill the grid values before searching',
+                backgroundColor: Colors.grey,
+              );
+            }
+          },
+        ),
+      ],
+    );
+  }
+
+  fabIcon() {
+    return FloatingActionButton(
+      onPressed: () {
+        // Navigator.pop(context);
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomePage(),
+          ),
+          (route) => false,
+        );
+      },
+      child: const Icon(Icons.restart_alt_sharp),
     );
   }
 }
@@ -104,12 +112,7 @@ class MySearchDelegate extends SearchDelegate {
 
   @override
   List<Widget>? buildActions(BuildContext context) {
-    return <Widget> [IconButton(
-      icon: const Icon(Icons.clear),
-      onPressed: () {
-        (query.isEmpty) ? close(context, null) : query = "";
-      },
-    )];
+    return null;
   }
 
   @override
